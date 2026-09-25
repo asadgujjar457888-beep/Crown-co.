@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "brand": "CROWN & CO BY ASAD",
+    "title": "Rose Gold Dial Quartz Watch",
+    "strap": "Brown Rubber Strap",
+    "image": "watch-rosegold-brown.jpg"
+  },
+  {
+    "id": "2",
+    "brand": "CROWN & CO BY ASAD",
+    "title": "CURREN GMT Chronometer",
+    "strap": "Black Silicone Strap",
+    "image": "watch-curren-black.jpg"
+  },
+  {
+    "id": "3",
+    "brand": "CROWN & CO BY ASAD",
+    "title": "Silver Dial Quartz Watch",
+    "strap": "Grey Rubber Strap",
+    "image": "watch-silver-grey.jpg"
+  },
+  {
+    "id": "4",
+    "brand": "CROWN & CO BY ASAD",
+    "title": "AMORA Classic Quartz Watch",
+    "strap": "Brown Leather Strap",
+    "image": "watch-amora-brown.jpg"
+  },
+  {
+    "id": "5",
+    "brand": "CROWN & CO BY ASAD",
+    "title": "AMORA Classic Quartz Watch",
+    "strap": "Black Leather Strap",
+    "image": "watch-amora-black.jpg"
+  }
+]
