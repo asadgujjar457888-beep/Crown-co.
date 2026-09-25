@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crown & Co. | Watches, Perfumes & Fashion</title>
+<meta name="description" content="Crown & Co. - Watches, perfumes, dressing, shoes and fashion accessories. Order on WhatsApp.">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#faf8f4;color:#171717}
+header{background:#111;color:#fff;position:sticky;top:0;z-index:10}
+.nav{max-width:1100px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:24px;font-weight:800;letter-spacing:1px}.logo span{font-size:12px;display:block;color:#c9a85d;letter-spacing:3px}
+.nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:14px}
+.hero{max-width:1100px;margin:auto;padding:70px 20px 55px;text-align:center}
+.hero h1{font-size:48px;margin:0 0 12px}.hero p{font-size:18px;color:#666;margin-bottom:28px}
+.btn{display:inline-block;background:#111;color:#fff;text-decoration:none;padding:14px 24px;border-radius:30px;font-weight:700}
+.categories{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px auto 45px;max-width:900px}
+.categories button{border:1px solid #ddd;background:#fff;padding:11px 17px;border-radius:25px;cursor:pointer}
+.section{max-width:1100px;margin:auto;padding:10px 20px 60px}.section h2{text-align:center;font-size:30px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border:1px solid #eee;border-radius:18px;overflow:hidden;box-shadow:0 8px 25px #0000000b}
+.pic{height:230px;background:#eee;display:flex;align-items:center;justify-content:center;color:#999;font-weight:700}
+.card-body{padding:17px}.card h3{margin:0 0 7px}.price{font-weight:800;font-size:18px;margin:8px 0 14px}
+.whatsapp{display:block;text-align:center;background:#159447;color:white;text-decoration:none;padding:12px;border-radius:10px;font-weight:700}
+.about{background:#111;color:#fff;border-radius:22px;padding:40px;text-align:center;margin-bottom:50px}
+footer{text-align:center;padding:28px;background:#111;color:#aaa}
+@media(max-width:750px){.grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:38px}}
+@media(max-width:500px){.grid{grid-template-columns:1fr}.nav a{display:none}.hero{padding-top:50px}.pic{height:250px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="logo">CROWN & CO.<span>STYLE • ELEGANCE</span></div>
+    <nav><a href="#shop">Shop</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Elevate Your Style</h1>
+  <p>Watches, perfumes, dressing, shoes & fashion accessories.</p>
+  <a class="btn" href="#shop">Explore Collection</a>
+</section>
+
+<div class="categories">
+  <button onclick="filterProducts('all')">All</button>
+  <button onclick="filterProducts('Watches')">Watches</button>
+  <button onclick="filterProducts('Perfumes')">Perfumes</button>
+  <button onclick="filterProducts('Dressing')">Dressing</button>
+  <button onclick="filterProducts('Shoes')">Shoes</button>
+  <button onclick="filterProducts('Accessories')">Accessories</button>
+</div>
+
+<section class="section" id="shop">
+  <h2>Our Collection</h2>
+  <div class="grid" id="products"></div>
+</section>
+
+<section class="section" id="about">
+  <div class="about">
+    <h2>Crown & Co.</h2>
+    <p>Premium style, everyday confidence. Browse our collection and order directly through WhatsApp.</p>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="about">
+    <h2>Order on WhatsApp</h2>
+    <p>For orders and enquiries, message us directly.</p>
+    <a class="btn" target="_blank" href="https://wa.me/971553641245?text=Hello%20Crown%20%26%20Co.%2C%20I%20want%20to%20place%20an%20order.">WhatsApp: 0553641245</a>
+  </div>
+</section>
+
+<footer>© 2026 Crown & Co. All rights reserved.</footer>
+
+<script>
+const WHATSAPP = "971553641245";
+
+/* بعد میں یہاں اپنے products add کریں:
+{
+  category:"Watches",
+  name:"Your Watch Name",
+  price:"AED 199",
+  image:"images/watch1.jpg"
+}
+*/
+const products = [
+  {category:"Watches",name:"Add Your Watch",price:"AED 0",image:""},
+  {category:"Perfumes",name:"Add Your Perfume",price:"AED 0",image:""},
+  {category:"Dressing",name:"Add Your Outfit",price:"AED 0",image:""},
+  {category:"Shoes",name:"Add Your Shoes",price:"AED 0",image:""},
+  {category:"Accessories",name:"Add Your Accessory",price:"AED 0",image:""}
+];
+
+function orderLink(p){
+  const msg=`Hello Crown & Co., I want to order: ${p.name} (${p.price}).`;
+  return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+}
+function render(list){
+  document.getElementById("products").innerHTML=list.map(p=>`
+    <article class="card">
+      <div class="pic">${p.image ? `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover">` : "PRODUCT IMAGE"}</div>
+      <div class="card-body">
+        <h3>${p.name}</h3><div class="price">${p.price}</div>
+        <a class="whatsapp" target="_blank" href="${orderLink(p)}">Order on WhatsApp</a>
+      </div>
+    </article>`).join("");
+}
+function filterProducts(cat){
+  render(cat==="all"?products:products.filter(p=>p.category===cat));
+}
+render(products);
+</script>
+</body>
+</html>
